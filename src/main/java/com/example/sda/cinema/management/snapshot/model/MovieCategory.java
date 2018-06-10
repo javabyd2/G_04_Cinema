@@ -1,5 +1,11 @@
 package com.example.sda.cinema.management.snapshot.model;
 
-public enum MovieCategory {
+import java.io.Serializable;
+
+public enum MovieCategory implements Serializable{
     HORROR, KOMEDIA, DOKUMENT, DRAMAT, PRZYGODOWY;
+
+    public String getCategory(){
+        return this.name();
+    }
 }

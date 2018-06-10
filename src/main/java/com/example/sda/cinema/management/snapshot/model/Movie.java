@@ -23,7 +23,7 @@ public class Movie {
     private Long id;
     private String title;
     private Integer length;
-    private MovieCategory category = MovieCategory.HORROR;
+    private String category;
     private String description;
     private String actors;
     private String posterUrl;
