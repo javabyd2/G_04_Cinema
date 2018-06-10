@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,8 +21,10 @@ public class Hall {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int rows;
-    private int seatsInRow;
+    private Integer rows;
+    private Integer seatsInRow;
+    private Set<Seance> seances;
+
 
 
 }

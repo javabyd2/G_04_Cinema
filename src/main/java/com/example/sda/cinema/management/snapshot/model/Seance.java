@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -22,13 +19,12 @@ public class Seance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne(cascade = CascadeType.REFRESH)
     private Movie movie;
     private Hall hall;
     private LocalDateTime startingTime;
+
+    @OneToMany(cascade = CascadeType.REFRESH)
     private Set<Ticket> tickets;
-
-
-
-
 
 }
