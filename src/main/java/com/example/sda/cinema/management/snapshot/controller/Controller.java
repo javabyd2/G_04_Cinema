@@ -2,6 +2,8 @@ package com.example.sda.cinema.management.snapshot.controller;
 
 
 import com.example.sda.cinema.management.snapshot.model.Movie;
+import com.example.sda.cinema.management.snapshot.model.MovieCategory;
+import com.example.sda.cinema.management.snapshot.service.CategoryService;
 import com.example.sda.cinema.management.snapshot.service.MovieService;
 import com.example.sda.cinema.management.snapshot.model.Seance;
 import com.example.sda.cinema.management.snapshot.service.SeanceService;
@@ -22,11 +24,20 @@ public class Controller {
     @Autowired
     private SeanceService seanceService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping(value = "/addmovie", method = RequestMethod.POST)
     public Movie addMovie (@RequestBody Movie movie) {return movieService.save(movie);}
 
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
     public List<Movie> showMovies() {return movieService.getMovies();}
+
+    @RequestMapping(value = "/addcategory", method = RequestMethod.POST)
+    public MovieCategory addCategory (@RequestBody MovieCategory category) { return categoryService.save(category);}
+
+    @RequestMapping(value = "/categories",method = RequestMethod.GET)
+    public List<MovieCategory> showCategories() {return categoryService.getCategories();}
 
     @RequestMapping(value ="/addseance",method = RequestMethod.POST)
     public Seance addSeance(@RequestBody Seance seance){
