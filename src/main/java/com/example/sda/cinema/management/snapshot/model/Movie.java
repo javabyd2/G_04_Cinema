@@ -23,7 +23,10 @@ public class Movie {
     private Long id;
     private String title;
     private Integer length;
-    private String category;
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private MovieCategory movieCategory;
+
     private String description;
     private String actors;
     private String posterUrl;
