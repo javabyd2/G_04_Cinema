@@ -21,6 +21,7 @@ public class Seance {
     private Long id;
     @ManyToOne(cascade = CascadeType.REFRESH)
     private Movie movie;
+    @ManyToOne
     private Hall hall;
     private LocalDateTime startingTime;
 
