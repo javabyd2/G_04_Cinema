@@ -1,6 +1,8 @@
 package com.example.sda.cinema.management.snapshot.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Ticket {
 
@@ -18,7 +22,5 @@ public class Ticket {
     private Long id;
     private int price;
 
-    public Ticket(int price) {
-        this.price = price;
-    }
+
 }
