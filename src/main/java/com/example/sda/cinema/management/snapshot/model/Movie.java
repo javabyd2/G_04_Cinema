@@ -2,6 +2,7 @@ package com.example.sda.cinema.management.snapshot.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ public class Movie {
     private Long id;
     private String title;
     private int length;
+    private MovieCategory category = MovieCategory.HORROR;
 
     public Movie(String title, int length) {
         this.title = title;
