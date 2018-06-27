@@ -27,5 +27,4 @@ public class Seance {
 
     @OneToMany(cascade = CascadeType.REFRESH)
     private Set<Ticket> tickets;
-
 }
