@@ -24,7 +24,7 @@ public class Movie {
     private String title;
     private Integer length;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne
     private MovieCategory movieCategory;
 
     private String description;

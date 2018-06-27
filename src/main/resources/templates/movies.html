@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+
+<!--/* Workaround for bug https://youtrack.jetbrains.com/issue/IDEA-132738 -->
+<!--@thymesVar id="moviesList" type="com.example.sda.cinema.management.snapshot.controller.WebController"-->
+<!--@thymesVar id="movie" type="com.example.sda.cinema.management.snapshot.model.Movie"-->
+<!--*/-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+</head>
+<body>
+
+<h2>MOVIES</h2>
+
+<div th:each="movie : ${moviesList}">
+
+    <div th:text="${movie.getTitle()}"></div>
+    <div th:text="${movie.getMovieCategory().getName()}"></div>
+    <br>
+
+</div>
+
+</body>
+</html>

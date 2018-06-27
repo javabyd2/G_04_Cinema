@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RequestMapping(value = "api")
 @RestController
 public class Controller {
 
@@ -43,6 +44,7 @@ public class Controller {
     public Seance addSeance(@RequestBody Seance seance){
         return seanceService.save(seance);
     }
+
     @RequestMapping(value = "/getseance", method = RequestMethod.GET)
     public List<Seance> seanceList(){
         return seanceService.getSeance();

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<!--/* Workaround for bug https://youtrack.jetbrains.com/issue/IDEA-132738 -->
+<!--@thymesVar id="message" type="com.example.sda.cinema.management.snapshot.controller.WebController"-->
+<!--@thymesVar id="categoryList" type="com.example.sda.cinema.management.snapshot.controller.WebController"-->
+<!--@thymesVar id="movie" type="com.example.sda.cinema.management.snapshot.model.Movie"-->
+<!--@thymesVar id="category" type="com.example.sda.cinema.management.snapshot.model.MovieCategory"-->
+<!--*/-->
+<head>
+    <meta charset="UTF-8">
+    <title>New Movie</title>
+</head>
+<body>
+
+<h2>New movie</h2>
+
+<p th:text="${message}"></p>
+
+<form th:action="@{newmovie}" method="post" th:object="${movie}">
+
+    <p>Title</p>
+
+    <input type="text" th:field="*{title}">
+
+    <p>Length</p>
+
+    <input type="range" min="1" max="200" th:field="*{length}">
+
+    <p>Category</p>
+
+    <select th:field="*{movieCategory.id}">
+
+        <option th:each="category : ${categoryList}" th:value="${category.getId()}" th:text="${category.getName()}">
+            option
+        </option>
+
+    </select>
+
+    <input type="submit" value="ADD">
+
+</form>
+
+</body>
+</html>
