@@ -39,6 +39,9 @@ public class Controller {
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
     public List<Movie> showMovies() {return movieService.getMovies();}
 
+    @RequestMapping(value = "/seances", method = RequestMethod.GET)
+    public List<Seance> showSeances() {return seanceService.getSeance();}
+
     @RequestMapping(value = "/addcategory", method = RequestMethod.POST)
     public MovieCategory addCategory (@RequestBody MovieCategory category) { return categoryService.save(category);}
 

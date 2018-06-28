@@ -1,8 +1,10 @@
 package com.example.sda.cinema.management.snapshot.controller;
 
 import com.example.sda.cinema.management.snapshot.model.Movie;
+import com.example.sda.cinema.management.snapshot.model.Seance;
 import com.example.sda.cinema.management.snapshot.service.CategoryService;
 import com.example.sda.cinema.management.snapshot.service.MovieService;
+import com.example.sda.cinema.management.snapshot.service.SeanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,9 @@ public class WebController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private SeanceService seanceService;
 
     @GetMapping(value = "home")
     public ModelAndView index() {
@@ -45,7 +50,28 @@ public class WebController {
     public String addMovie(@ModelAttribute Movie movie, RedirectAttributes redirectAttributes) {
         movieService.save(movie);
         redirectAttributes.addFlashAttribute("message", "DODANO");
-        return "redirect:/newmovie";
+        return "redirect:newmovie";
+    }
+
+    @GetMapping(value = "/seances")
+    public ModelAndView showSeances() {
+        ModelAndView modelAndView = new ModelAndView("seances");
+        modelAndView.addObject("seancesList", seanceService.getSeance());
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/getseance")
+    public ModelAndView newSeance() {
+        ModelAndView modelAndView = new ModelAndView("addseanceform");
+        modelAndView.addObject("seance", new Seance());
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/addseance")
+    public String addSeance(@ModelAttribute("addseance") Seance seance, RedirectAttributes redirectAttributes) {
+        seanceService.save(seance);
+        redirectAttributes.addFlashAttribute("message", "DODANO");
+        return "redirect:newseance";
     }
 
 }
