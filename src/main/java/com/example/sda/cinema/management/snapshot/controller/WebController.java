@@ -6,11 +6,10 @@ import com.example.sda.cinema.management.snapshot.service.CategoryService;
 import com.example.sda.cinema.management.snapshot.service.MovieService;
 import com.example.sda.cinema.management.snapshot.service.SeanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -60,18 +59,22 @@ public class WebController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/getseance")
+    @GetMapping(value = "/addseance")
     public ModelAndView newSeance() {
-        ModelAndView modelAndView = new ModelAndView("addseanceform");
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("seance", new Seance());
+        modelAndView.addObject("seanceList", seanceService.getSeance());
+        modelAndView.addObject("movie", new Movie());
+        modelAndView.addObject("movieList", movieService.getMovies());
+        modelAndView.setViewName("addseance");
         return modelAndView;
     }
 
     @PostMapping(value = "/addseance")
-    public String addSeance(@ModelAttribute("addseance") Seance seance, RedirectAttributes redirectAttributes) {
+    public String addSeance(@ModelAttribute Seance seance, RedirectAttributes redirectAttributes) {
         seanceService.save(seance);
         redirectAttributes.addFlashAttribute("message", "DODANO");
-        return "redirect:newseance";
+        return "redirect:addseance";
     }
 
 }
